@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+
+<head>
+	<link href="https://www.promoavto.com/" rel="canonical" />
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/style.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="реклама на авто, реклама на транспорте, реклама на автомобиле, размещение рекламы на транспорте, реклама на транспорте москва, наружная реклама на транспорте, реклама на машинах, разместить рекламу на автомобиле"
+	/>
+	<meta name="description" content="Реклама на авто и грузовом транспорте Москвы от 5300 руб. Изготовление и размещение рекламы на транспорте."
+	/>
+
+	<title>авто </title>
+
+
+</head>
+
+<body>
+	<style>
+		.wrapper {
+			width: 464px;
+    		height: 152px;
+    		margin: 100px auto;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+			background: rgba(247, 246, 245, 1);
+		}
+		.banner-container {
+			overflow: hidden;
+			position: relative;
+			width: 460px;
+    		margin: 100px auto;
+		}
+
+		.banner-container ul {
+			/*height: 639px;*/
+		}
+		
+		.ul-width {
+			width: 600px;
+			display: flex;
+		}
+
+		.banner-container li {
+			float: left;
+			overflow: hidden;
+			cursor: pointer;
+			position: relative;
+			z-index: 9;
+			margin-right: 2px;
+		}
+
+		.banner-container li a {
+			display: block;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		.banner-container li span.overlay {
+			background: url(assets/images/bg-overlay-v2.png) repeat;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+
+		.banner-container, .ul-width {
+			height: 148px !important;
+		}
+
+		.block-width {
+			width: 148px;
+			height: 148px;
+		}
+
+		.bg-banner {
+			background: url(assets/images/banner.jpg);
+		}
+		.bg-banner:hover {
+			background: url(assets/images/banner_logo.jpg);
+		}
+		.bg-bus {
+			background: url(assets/images/bus.jpg);
+		}
+		.bg-bus:hover {
+			background: url(assets/images/bus_logo.jpg);
+		}
+		.bg-backlit {
+			background: url(assets/images/backlit.jpg);
+		}
+		.bg-backlit:hover {
+			background: url(assets/images/backlit_logo.jpg);
+		}
+		.bg-window {
+			background: url(assets/images/window.jpg);
+		}
+		.bg-window:hover {
+			background: url(assets/images/window_logo.jpg);
+		}
+
+		
+		
+	</style>
+
+
+	<div class="wrapper">
+		<div class="banner-container">
+
+			<ul class="ul-width">
+	
+				<li>
+	
+					<a href="#">
+						<div class="block-width bg-banner"></div>
+					</a>
+	
+					<span class="overlay"></span>
+	
+				</li>
+	
+				<li>
+	
+					<a href="#">
+						<div class="block-width bg-bus"></div>
+					</a>
+	
+					<span class="overlay"></span>
+	
+				</li>
+	
+				<li>
+	
+					<a href="#">
+						<div class="block-width bg-backlit"></div>
+					</a>
+	
+					<span class="overlay"></span>
+	
+				</li>
+	
+				<li>
+	
+					<a href="#">
+						<div class="block-width bg-window"></div>
+					</a>
+	
+					<span class="overlay"></span>
+	
+				</li>
+	
+	
+			</ul>
+	
+			<div class="clear"></div>
+	
+		</div>
+	</div>
+
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+	<script src="./js/custom.js"></script>
+	<script type="text/javascript">
+
+		$(window).load(function () {
+			var sum = 0;
+			$('.banner-container li .block-width').each(function () {
+				sum += $(this).width();
+			});
+			$('.banner-container ul').width(sum);
+		});
+
+		$(function () {
+			var winWidth = $(".banner-container").width();
+			var ulWidthCount = 0;
+			ulWidthCount = $('.banner-container li').size();
+			$(".banner-container li").width(winWidth / ulWidthCount);
+			$(".banner-container li").hover(function () {
+				ulWidthCount = $('.banner-container li').size();
+				var imgWidth = $(this).find(".block-width").width();
+				var bannerLi = winWidth - imgWidth;
+				var remWidth = ulWidthCount - 1;
+				var appWidth = bannerLi / remWidth;
+				$(".banner-container li").stop(true, false).animate({ width: appWidth }, 700);
+				$(this).stop(true, false).animate({ width: imgWidth }, 700);
+				$(this).find("span.overlay").stop(true, false).fadeOut();
+			}, function () {
+				$(this).animate({ width: winWidth / ulWidthCount }, 700);
+				$(".banner-container li").animate({ width: winWidth / ulWidthCount }, 700);
+				$(this).find("span.overlay").fadeIn();
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>
